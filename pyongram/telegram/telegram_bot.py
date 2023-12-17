@@ -5,7 +5,7 @@ from pyongram import TelegramException
 from pyongram.session.sessions import MemorySession
 from pyongram.telegram.methods.telegram_bot_api import TelegramBotApi
 from pyongram import Context
-from pyongram.router.routers import FormRouter
+from pyongram.router.routers import LabeledRouter
 from pyongram.utils.update_parser import UpdateParser
 
 
@@ -56,7 +56,6 @@ class TelegramBotLongPolling(TelegramBot):
                 try:
                     await self._handle_state_and_router(update)
                 except TelegramException as t:
-                    print(t.with_traceback(None))
                     await self._bot.get_updates(max(offset, update_id) + 1, limit, timeout, allowed_updates)
                 finally:
                     offset = max(offset, update_id) + 1
@@ -69,17 +68,14 @@ class TelegramBotLongPolling(TelegramBot):
         session = [session for session in self._sessions if session.user_id == update_parser.update_from_id()][0]
 
         if session:
-            form_router = [form_router for form_router in self._routers if (isinstance(form_router, FormRouter) and
+            labeled_router = [labeled_router for labeled_router in self._routers if (isinstance(labeled_router, LabeledRouter) and
                                                                             session.check_the_session_form(
-                                                                                form_router.name))]
-            print(form_router)
-            if form_router:
-                print(type(form_router))
-                await self._handle_router(update, form_router[0], session)
+                                                                                labeled_router.label))]
+            if labeled_router:
+                await self._handle_router(update, labeled_router[0], session)
             else:
                 for router in self._routers:
-                    if isinstance(router, FormRouter):
-                        print(isinstance(router, FormRouter))
+                    if isinstance(router, LabeledRouter):
                         continue
                     await self._handle_router(update, router, session)
         else:

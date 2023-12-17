@@ -37,28 +37,28 @@ class MemorySession(BaseSession, ABC):
     def __init__(self, update):
         super().__init__(update)
         self._data = {}
-        self._form = ""
+        self._label = ""
 
     @property
     def data(self):
         return self._data
 
     def link_to_form(self, name):
-        self._form = name
+        self._label = name
 
     @property
-    def form(self):
-        return self._form
+    def label(self):
+        return self._label
 
-    @form.setter
-    def form(self, name):
-        self._form = name
+    @label.setter
+    def label(self, name):
+        self._label = name
 
     def check_the_session_form(self, router_name):
-        return self._form == router_name and self.user_id
+        return self._label == router_name and self.user_id
 
     def is_session(self):
-        return self._form and self.user_id
+        return self._label and self.user_id
 
     def set(self, key, value):
         self.data[key] = value

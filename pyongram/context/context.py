@@ -23,10 +23,10 @@ class Context:
         return self._session
 
     def enter(self, name):
-        self._session.form = name
+        self._session.label = name
 
     def exit(self):
-        self._session.form = ""
+        self._session.label = ""
 
     async def reply(self,
                     text,

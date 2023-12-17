@@ -1,20 +1,21 @@
 from pyongram.network.client import ApiClient
+from pyongram.utils.useful_functions import remove_none_value
 
 
 class TelegramBotApi:
     def __init__(self, token: str):
         self._client = ApiClient(f"https://api.telegram.org/bot{token}")
 
-    @staticmethod
-    def _remove_none_value(params: dict):
-        remove_keys = []
-        for key in params.keys():
-            if params[key] is None:
-                remove_keys.append(key)
-
-        for key in remove_keys:
-            params.pop(key)
-        return params
+    # @staticmethod
+    # def _remove_none_value(params: dict):
+    #     remove_keys = []
+    #     for key in params.keys():
+    #         if params[key] is None:
+    #             remove_keys.append(key)
+    #
+    #     for key in remove_keys:
+    #         params.pop(key)
+    #     return params
 
     async def get_updates(
             self,
@@ -23,7 +24,7 @@ class TelegramBotApi:
             timeout,
             allowed_updates
     ):
-        return await self._client.request_to_api("getUpdates", self._remove_none_value({
+        return await self._client.request_to_api("getUpdates", remove_none_value({
             "offset": offset,
             "limit": limit,
             "timeout": timeout,
@@ -40,7 +41,7 @@ class TelegramBotApi:
             drop_pending_updates=None,
             secret_token=None
     ):
-        return await self._client.request_to_api("setWebhook", self._remove_none_value({
+        return await self._client.request_to_api("setWebhook", remove_none_value({
             "url": url,
             "certificate": certificate,
             "ip_address": ip_address,
@@ -51,7 +52,7 @@ class TelegramBotApi:
         }))
 
     async def delete_webhook(self, drop_pending_updates=None):
-        return await self._client.request_to_api("deleteWebhook", self._remove_none_value({
+        return await self._client.request_to_api("deleteWebhook", remove_none_value({
             "drop_pending_updates": drop_pending_updates
         }))
 
@@ -72,7 +73,7 @@ class TelegramBotApi:
             allow_sending_without_reply=None,
             reply_markup=None
     ):
-        return await self._client.request_to_api("sendMessage", self._remove_none_value({
+        return await self._client.request_to_api("sendMessage", remove_none_value({
             "chat_id": chat_id,
             "text": text,
             "message_thread_id": message_thread_id,
@@ -95,7 +96,7 @@ class TelegramBotApi:
             protect_content=None,
             message_id=None
     ):
-        return await self._client.request_to_api("forwardMessage", self._remove_none_value({
+        return await self._client.request_to_api("forwardMessage", remove_none_value({
             "chat_id": chat_id,
             "from_chat_id": from_chat_id,
             "message_thread_id": message_thread_id,
@@ -119,7 +120,7 @@ class TelegramBotApi:
             allow_sending_without_reply=None,
             reply_markup=None
     ):
-        return await self._client.request_to_api("copyMessage", self._remove_none_value({
+        return await self._client.request_to_api("copyMessage", remove_none_value({
             "chat_id": chat_id,
             "from_chat_id": from_chat_id,
             "message_id": message_id,
@@ -149,7 +150,7 @@ class TelegramBotApi:
             allow_sending_without_reply=None,
             reply_markup=None
     ):
-        return await self._client.request_to_api("sendPhoto", self._remove_none_value({
+        return await self._client.request_to_api("sendPhoto", remove_none_value({
             "chat_id": chat_id,
             "photo": photo,
             "message_thread_id": message_thread_id,
@@ -182,7 +183,7 @@ class TelegramBotApi:
             allow_sending_without_reply=None,
             reply_markup=None
     ):
-        return await self._client.request_to_api("sendAudio", self._remove_none_value({
+        return await self._client.request_to_api("sendAudio", remove_none_value({
             "chat_id": chat_id,
             "audio": audio,
             "message_thread_id": message_thread_id,
@@ -216,7 +217,7 @@ class TelegramBotApi:
             allow_sending_without_reply=None,
             reply_markup=None
     ):
-        return await self._client.request_to_api("sendDocument", self._remove_none_value({
+        return await self._client.request_to_api("sendDocument", remove_none_value({
             "chat_id": chat_id,
             "document": document,
             "message_thread_id": message_thread_id,
@@ -252,7 +253,7 @@ class TelegramBotApi:
             allow_sending_without_reply=None,
             reply_markup=None
     ):
-        return await self._client.request_to_api("sendVideo", self._remove_none_value({
+        return await self._client.request_to_api("sendVideo", remove_none_value({
             "chat_id": chat_id,
             "video": video,
             "message_thread_id": message_thread_id,
@@ -291,7 +292,7 @@ class TelegramBotApi:
             allow_sending_without_reply=None,
             reply_markup=None
     ):
-        return await self._client.request_to_api("sendAnimation", self._remove_none_value({
+        return await self._client.request_to_api("sendAnimation", remove_none_value({
             "chat_id": chat_id,
             "animation": animation,
             "message_thread_id": message_thread_id,
@@ -325,7 +326,7 @@ class TelegramBotApi:
             allow_sending_without_reply=None,
             reply_markup=None
     ):
-        return await self._client.request_to_api("sendVoice", self._remove_none_value({
+        return await self._client.request_to_api("sendVoice", remove_none_value({
             "chat_id": chat_id,
             "voice": voice,
             "message_thread_id": message_thread_id,
@@ -357,7 +358,7 @@ class TelegramBotApi:
             allow_sending_without_reply=None,
             reply_markup=None
     ):
-        return await self._client.request_to_api("sendVideoNote", self._remove_none_value({
+        return await self._client.request_to_api("sendVideoNote", remove_none_value({
             "chat_id": chat_id,
             "video_note": video_note,
             "message_thread_id": message_thread_id,
@@ -384,7 +385,7 @@ class TelegramBotApi:
             reply_to_message_id=None,
             allow_sending_without_reply=None
     ):
-        return await self._client.request_to_api("sendMediaGroup", self._remove_none_value({
+        return await self._client.request_to_api("sendMediaGroup", remove_none_value({
             "chat_id": chat_id,
             "media": media,
             "message_thread_id": message_thread_id,
@@ -410,7 +411,7 @@ class TelegramBotApi:
             allow_sending_without_reply=None,
             reply_markup=None
     ):
-        return await self._client.request_to_api("sendLocation", self._remove_none_value({
+        return await self._client.request_to_api("sendLocation", remove_none_value({
             "chat_id": chat_id,
             "latitude": latitude,
             "longitude": longitude,
@@ -444,7 +445,7 @@ class TelegramBotApi:
             allow_sending_without_reply=None,
             reply_markup=None
     ):
-        return await self._client.request_to_api("sendVenue", self._remove_none_value({
+        return await self._client.request_to_api("sendVenue", remove_none_value({
             "chat_id": chat_id,
             "latitude": latitude,
             "longitude": longitude,
@@ -476,7 +477,7 @@ class TelegramBotApi:
             allow_sending_without_reply=None,
             reply_markup=None
     ):
-        return await self._client.request_to_api("sendContact", self._remove_none_value({
+        return await self._client.request_to_api("sendContact", remove_none_value({
             "chat_id": chat_id,
             "phone_number": phone_number,
             "first_name": first_name,
@@ -512,7 +513,7 @@ class TelegramBotApi:
             allow_sending_without_reply=None,
             reply_markup=None
     ):
-        return await self._client.request_to_api("sendPoll", self._remove_none_value({
+        return await self._client.request_to_api("sendPoll", remove_none_value({
             "chat_id": chat_id,
             "question": question,
             "options": options,
@@ -545,7 +546,7 @@ class TelegramBotApi:
             allow_sending_without_reply=None,
             reply_markup=None
     ):
-        return await self._client.request_to_api("sendDice", self._remove_none_value({
+        return await self._client.request_to_api("sendDice", remove_none_value({
             "chat_id": chat_id,
             "emoji": emoji,
             "message_thread_id": message_thread_id,
@@ -562,7 +563,7 @@ class TelegramBotApi:
             action,
             message_thread_id=None
     ):
-        return await self._client.request_to_api("sendChatAction", self._remove_none_value({
+        return await self._client.request_to_api("sendChatAction", remove_none_value({
             "chat_id": chat_id,
             "action": action,
             "message_thread_id": message_thread_id
@@ -574,14 +575,14 @@ class TelegramBotApi:
             offset=None,
             limit=None
     ):
-        return await self._client.request_to_api("getUserProfilePhotos", self._remove_none_value({
+        return await self._client.request_to_api("getUserProfilePhotos", remove_none_value({
             "user_id": user_id,
             "offset": offset,
             "limit": limit
         }))
 
     async def get_file(self, file_id):
-        return await self._client.request_to_api("getFile", self._remove_none_value({"file_id": file_id}))
+        return await self._client.request_to_api("getFile", remove_none_value({"file_id": file_id}))
 
     async def ban_chat_member(
             self,
@@ -590,7 +591,7 @@ class TelegramBotApi:
             until_date=None,
             revoke_messages=None
     ):
-        return await self._client.request_to_api("banChatMember", self._remove_none_value({
+        return await self._client.request_to_api("banChatMember", remove_none_value({
             "chat_id": chat_id,
             "user_id": user_id,
             "until_date": until_date,
@@ -603,7 +604,7 @@ class TelegramBotApi:
             user_id,
             only_if_banned=None
     ):
-        return await self._client.request_to_api("unbanChatMember", self._remove_none_value({
+        return await self._client.request_to_api("unbanChatMember", remove_none_value({
             "chat_id": chat_id,
             "user_id": user_id,
             "only_if_banned": only_if_banned
@@ -617,7 +618,7 @@ class TelegramBotApi:
             use_independent_chat_permissions=None,
             until_date=None
     ):
-        return await self._client.request_to_api("restrictChatMember", self._remove_none_value({
+        return await self._client.request_to_api("restrictChatMember", remove_none_value({
             "chat_id": chat_id,
             "user_id": user_id,
             "permissions": permissions,
@@ -645,7 +646,7 @@ class TelegramBotApi:
             can_delete_stories=None,
             can_manage_topics=None
     ):
-        return await self._client.request_to_api("promoteChatMember", self._remove_none_value({
+        return await self._client.request_to_api("promoteChatMember", remove_none_value({
             "chat_id": chat_id,
             "user_id": user_id,
             "is_anonymous": is_anonymous,
@@ -671,7 +672,7 @@ class TelegramBotApi:
             user_id,
             custom_title
     ):
-        return await self._client.request_to_api("setChatAdministratorCustomTitle", self._remove_none_value({
+        return await self._client.request_to_api("setChatAdministratorCustomTitle", remove_none_value({
             "chat_id": chat_id,
             "user_id": user_id,
             "custom_title": custom_title
@@ -682,7 +683,7 @@ class TelegramBotApi:
             chat_id,
             sender_chat_id
     ):
-        return await self._client.request_to_api("banChatSenderChat", self._remove_none_value({
+        return await self._client.request_to_api("banChatSenderChat", remove_none_value({
             "chat_id": chat_id,
             "sender_chat_id": sender_chat_id
         }))
@@ -692,7 +693,7 @@ class TelegramBotApi:
             chat_id,
             sender_chat_id
     ):
-        return await self._client.request_to_api("unbanChatSenderChat", self._remove_none_value({
+        return await self._client.request_to_api("unbanChatSenderChat", remove_none_value({
             "chat_id": chat_id, "sender_chat_id": sender_chat_id
         }))
 
@@ -702,7 +703,7 @@ class TelegramBotApi:
             permissions,
             use_independent_chat_permissions=None
     ):
-        return await self._client.request_to_api("setChatPermissions", self._remove_none_value({
+        return await self._client.request_to_api("setChatPermissions", remove_none_value({
             "chat_id": chat_id,
             "permissions": permissions,
             "use_independent_chat_permissions":
@@ -710,7 +711,7 @@ class TelegramBotApi:
         }))
 
     async def export_chat_invite_link(self, chat_id):
-        return await self._client.request_to_api("exportChatInviteLink", self._remove_none_value({
+        return await self._client.request_to_api("exportChatInviteLink", remove_none_value({
             "chat_id": chat_id
         }))
 
@@ -722,7 +723,7 @@ class TelegramBotApi:
             member_limit=None,
             creates_join_request=None
     ):
-        return await self._client.request_to_api("createChatInviteLink", self._remove_none_value({
+        return await self._client.request_to_api("createChatInviteLink", remove_none_value({
             "chat_id": chat_id,
             "name": name,
             "expire_date": expire_date,
@@ -739,7 +740,7 @@ class TelegramBotApi:
             member_limit=None,
             creates_join_request=None
     ):
-        return await self._client.request_to_api("editChatInviteLink", self._remove_none_value({
+        return await self._client.request_to_api("editChatInviteLink", remove_none_value({
             "chat_id": chat_id,
             "invite_link": invite_link,
             "name": name,
@@ -753,7 +754,7 @@ class TelegramBotApi:
             chat_id,
             invite_link
     ):
-        return await self._client.request_to_api("revokeChatInviteLink", self._remove_none_value({
+        return await self._client.request_to_api("revokeChatInviteLink", remove_none_value({
             "chat_id": chat_id,
             "invite_link": invite_link
         }))
@@ -763,7 +764,7 @@ class TelegramBotApi:
             chat_id,
             user_id
     ):
-        return await self._client.request_to_api("approveChatJoinRequest", self._remove_none_value({
+        return await self._client.request_to_api("approveChatJoinRequest", remove_none_value({
             "chat_id": chat_id,
             "user_id": user_id
         }))
@@ -773,7 +774,7 @@ class TelegramBotApi:
             chat_id,
             user_id
     ):
-        return await self._client.request_to_api("declineChatJoinRequest", self._remove_none_value({
+        return await self._client.request_to_api("declineChatJoinRequest", remove_none_value({
             "chat_id": chat_id,
             "user_id": user_id
         }))
@@ -783,7 +784,7 @@ class TelegramBotApi:
             chat_id,
             photo
     ):
-        return await self._client.request_to_api("setChatPhoto", self._remove_none_value({
+        return await self._client.request_to_api("setChatPhoto", remove_none_value({
             "chat_id": chat_id,
             "photo": photo
         }))
@@ -792,7 +793,7 @@ class TelegramBotApi:
             self,
             chat_id
     ):
-        return await self._client.request_to_api("deleteChatPhoto", self._remove_none_value({
+        return await self._client.request_to_api("deleteChatPhoto", remove_none_value({
             "chat_id": chat_id
         }))
 
@@ -801,7 +802,7 @@ class TelegramBotApi:
             chat_id,
             title
     ):
-        return await self._client.request_to_api("setChatTitle", self._remove_none_value({
+        return await self._client.request_to_api("setChatTitle", remove_none_value({
             "chat_id": chat_id,
             "title": title
         }))
@@ -811,7 +812,7 @@ class TelegramBotApi:
             chat_id,
             description
     ):
-        return await self._client.request_to_api("setChatDescription", self._remove_none_value({
+        return await self._client.request_to_api("setChatDescription", remove_none_value({
             "chat_id": chat_id,
             "description": description
         }))
@@ -822,7 +823,7 @@ class TelegramBotApi:
             message_id,
             disable_notification
     ):
-        return await self._client.request_to_api("pinChatMessage", self._remove_none_value({
+        return await self._client.request_to_api("pinChatMessage", remove_none_value({
             "chat_id": chat_id,
             "message_id": message_id,
             "disable_notification": disable_notification
@@ -833,7 +834,7 @@ class TelegramBotApi:
             chat_id,
             message_id
     ):
-        return await self._client.request_to_api("pinChatMessage", self._remove_none_value({
+        return await self._client.request_to_api("pinChatMessage", remove_none_value({
             "chat_id": chat_id,
             "message_id": message_id
         }))
@@ -842,7 +843,7 @@ class TelegramBotApi:
             self,
             chat_id
     ):
-        return await self._client.request_to_api("leaveChat", self._remove_none_value({
+        return await self._client.request_to_api("leaveChat", remove_none_value({
             "chat_id": chat_id
         }))
 
@@ -850,7 +851,7 @@ class TelegramBotApi:
             self,
             chat_id
     ):
-        return await self._client.request_to_api("getChat", self._remove_none_value({
+        return await self._client.request_to_api("getChat", remove_none_value({
             "chat_id": chat_id
         }))
 
@@ -858,7 +859,7 @@ class TelegramBotApi:
             self,
             chat_id
     ):
-        return await self._client.request_to_api("getChatAdministrators", self._remove_none_value({
+        return await self._client.request_to_api("getChatAdministrators", remove_none_value({
             "chat_id": chat_id
         })
                                                  )
@@ -867,7 +868,7 @@ class TelegramBotApi:
             self,
             chat_id
     ):
-        return await self._client.request_to_api("getChatMemberCount", self._remove_none_value({
+        return await self._client.request_to_api("getChatMemberCount", remove_none_value({
             "chat_id": chat_id
         }))
 
@@ -875,7 +876,7 @@ class TelegramBotApi:
             self,
             chat_id
     ):
-        return await self._client.request_to_api("getChatMember", self._remove_none_value({
+        return await self._client.request_to_api("getChatMember", remove_none_value({
             "chat_id": chat_id
         }))
 
@@ -884,7 +885,7 @@ class TelegramBotApi:
             chat_id,
             sticker_set_name
     ):
-        return await self._client.request_to_api("setChatStickerSet", self._remove_none_value({
+        return await self._client.request_to_api("setChatStickerSet", remove_none_value({
             "chat_id": chat_id,
             "sticker_set_name": sticker_set_name
         }))
@@ -893,7 +894,7 @@ class TelegramBotApi:
             self,
             chat_id,
     ):
-        return await self._client.request_to_api("deleteChatStickerSet", self._remove_none_value({
+        return await self._client.request_to_api("deleteChatStickerSet", remove_none_value({
             "chat_id": chat_id
         }))
 
@@ -901,7 +902,7 @@ class TelegramBotApi:
             self,
             chat_id,
     ):
-        return await self._client.request_to_api("getForumTopicIconStickers", self._remove_none_value({
+        return await self._client.request_to_api("getForumTopicIconStickers", remove_none_value({
             "chat_id": chat_id
         }))
 
@@ -912,7 +913,7 @@ class TelegramBotApi:
             icon_color=None,
             icon_custom_emoji_id=None
     ):
-        return await self._client.request_to_api("createForumTopic", self._remove_none_value({
+        return await self._client.request_to_api("createForumTopic", remove_none_value({
             "chat_id": chat_id,
             "name": name,
             "icon_color": icon_color,
@@ -926,7 +927,7 @@ class TelegramBotApi:
             name=None,
             icon_custom_emoji_id=None
     ):
-        return await self._client.request_to_api("editForumTopic", self._remove_none_value({
+        return await self._client.request_to_api("editForumTopic", remove_none_value({
             "chat_id": chat_id,
             "message_thread_id": message_thread_id,
             "name": name,
@@ -938,7 +939,7 @@ class TelegramBotApi:
             chat_id,
             message_thread_id
     ):
-        return await self._client.request_to_api("closeForumTopic", self._remove_none_value({
+        return await self._client.request_to_api("closeForumTopic", remove_none_value({
             "chat_id": chat_id,
             "message_thread_id": message_thread_id
         }))
@@ -948,7 +949,7 @@ class TelegramBotApi:
             chat_id,
             message_thread_id
     ):
-        return await self._client.request_to_api("reopenForumTopic", self._remove_none_value({
+        return await self._client.request_to_api("reopenForumTopic", remove_none_value({
             "chat_id": chat_id,
             "message_thread_id": message_thread_id
         }))
@@ -958,7 +959,7 @@ class TelegramBotApi:
             chat_id,
             message_thread_id
     ):
-        return await self._client.request_to_api("deleteForumTopic", self._remove_none_value({
+        return await self._client.request_to_api("deleteForumTopic", remove_none_value({
             "chat_id": chat_id,
             "message_thread_id": message_thread_id
         }))
@@ -968,7 +969,7 @@ class TelegramBotApi:
             chat_id,
             message_thread_id
     ):
-        return await self._client.request_to_api("unpinAllForumTopicMessages", self._remove_none_value({
+        return await self._client.request_to_api("unpinAllForumTopicMessages", remove_none_value({
             "chat_id": chat_id,
             "message_thread_id": message_thread_id
         }))
@@ -978,7 +979,7 @@ class TelegramBotApi:
             chat_id,
             name
     ):
-        return await self._client.request_to_api("editGeneralForumTopic", self._remove_none_value({
+        return await self._client.request_to_api("editGeneralForumTopic", remove_none_value({
             "chat_id": chat_id,
             "name": name
         }))
@@ -987,7 +988,7 @@ class TelegramBotApi:
             self,
             chat_id
     ):
-        return await self._client.request_to_api("closeGeneralForumTopic", self._remove_none_value({
+        return await self._client.request_to_api("closeGeneralForumTopic", remove_none_value({
             "chat_id": chat_id
         }))
 
@@ -995,7 +996,7 @@ class TelegramBotApi:
             self,
             chat_id
     ):
-        return await self._client.request_to_api("reopenGeneralForumTopic", self._remove_none_value({
+        return await self._client.request_to_api("reopenGeneralForumTopic", remove_none_value({
             "chat_id": chat_id
         }))
 
@@ -1003,7 +1004,7 @@ class TelegramBotApi:
             self,
             chat_id
     ):
-        return await self._client.request_to_api("hideGeneralForumTopic", self._remove_none_value({
+        return await self._client.request_to_api("hideGeneralForumTopic", remove_none_value({
             "chat_id": chat_id
         }))
 
@@ -1011,7 +1012,7 @@ class TelegramBotApi:
             self,
             chat_id
     ):
-        return await self._client.request_to_api("unhideGeneralForumTopic", self._remove_none_value({
+        return await self._client.request_to_api("unhideGeneralForumTopic", remove_none_value({
             "chat_id": chat_id
         }))
 
@@ -1019,7 +1020,7 @@ class TelegramBotApi:
             self,
             chat_id
     ):
-        return await self._client.request_to_api("unpinAllGeneralForumTopicMessages", self._remove_none_value({
+        return await self._client.request_to_api("unpinAllGeneralForumTopicMessages", remove_none_value({
             "chat_id": chat_id
         }))
 
@@ -1031,7 +1032,7 @@ class TelegramBotApi:
             url=None,
             cache_time=None,
     ):
-        return await self._client.request_to_api("answerCallbackQuery", self._remove_none_value({
+        return await self._client.request_to_api("answerCallbackQuery", remove_none_value({
             "callback_query_id": callback_query_id,
             "text": text,
             "show_alert": show_alert,
@@ -1045,7 +1046,7 @@ class TelegramBotApi:
             scope=None,
             language_code=None
     ):
-        return await self._client.request_to_api("setMyCommands", self._remove_none_value({
+        return await self._client.request_to_api("setMyCommands", remove_none_value({
             "commands": commands,
             "scope": scope,
             "language_code": language_code
@@ -1056,7 +1057,7 @@ class TelegramBotApi:
             scope=None,
             language_code=None
     ):
-        return await self._client.request_to_api("deleteMyCommands", self._remove_none_value({
+        return await self._client.request_to_api("deleteMyCommands", remove_none_value({
             "scope": scope,
             "language_code": language_code
         }))
@@ -1066,7 +1067,7 @@ class TelegramBotApi:
             scope=None,
             language_code=None
     ):
-        return await self._client.request_to_api("getMyCommands", self._remove_none_value({
+        return await self._client.request_to_api("getMyCommands", remove_none_value({
             "scope": scope,
             "language_code": language_code
         }))
@@ -1076,7 +1077,7 @@ class TelegramBotApi:
             name=None,
             language_code=None
     ):
-        return await self._client.request_to_api("setMyName", self._remove_none_value({
+        return await self._client.request_to_api("setMyName", remove_none_value({
             "name": name,
             "language_code": language_code
         }))
@@ -1085,7 +1086,7 @@ class TelegramBotApi:
             self,
             language_code=None
     ):
-        return await self._client.request_to_api("getMyName", self._remove_none_value({
+        return await self._client.request_to_api("getMyName", remove_none_value({
             "language_code": language_code
         }))
 
@@ -1094,7 +1095,7 @@ class TelegramBotApi:
             description=None,
             language_code=None
     ):
-        return await self._client.request_to_api("setMyDescription", self._remove_none_value({
+        return await self._client.request_to_api("setMyDescription", remove_none_value({
             "description": description,
             "language_code": language_code
         }))
@@ -1103,7 +1104,7 @@ class TelegramBotApi:
             self,
             language_code=None
     ):
-        return await self._client.request_to_api("getMyDescription", self._remove_none_value({
+        return await self._client.request_to_api("getMyDescription", remove_none_value({
             "language_code": language_code
         }))
 
@@ -1112,7 +1113,7 @@ class TelegramBotApi:
             short_description=None,
             language_code=None
     ):
-        return await self._client.request_to_api("setMyShortDescription", self._remove_none_value({
+        return await self._client.request_to_api("setMyShortDescription", remove_none_value({
             "short_description": short_description,
             "language_code": language_code
         }))
@@ -1121,7 +1122,7 @@ class TelegramBotApi:
             self,
             language_code=None
     ):
-        return await self._client.request_to_api("getMyShortDescription", self._remove_none_value({
+        return await self._client.request_to_api("getMyShortDescription", remove_none_value({
             "language_code": language_code
         }))
 
@@ -1130,7 +1131,7 @@ class TelegramBotApi:
             chat_id=None,
             menu_button=None
     ):
-        return await self._client.request_to_api("setChatMenuButton", self._remove_none_value({
+        return await self._client.request_to_api("setChatMenuButton", remove_none_value({
             "chat_id": chat_id,
             "menu_button": menu_button
         }))
@@ -1139,7 +1140,7 @@ class TelegramBotApi:
             self,
             chat_id=None
     ):
-        return await self._client.request_to_api("getChatMenuButton", self._remove_none_value({
+        return await self._client.request_to_api("getChatMenuButton", remove_none_value({
             "chat_id": chat_id
         }))
 
@@ -1148,7 +1149,7 @@ class TelegramBotApi:
             rights=None,
             for_channels=None
     ):
-        return await self._client.request_to_api("setMyDefaultAdministratorRights", self._remove_none_value({
+        return await self._client.request_to_api("setMyDefaultAdministratorRights", remove_none_value({
             "rights": rights,
             "for_channels": for_channels
         }))
@@ -1157,7 +1158,7 @@ class TelegramBotApi:
             self,
             for_channels=None
     ):
-        return await self._client.request_to_api("getMyDefaultAdministratorRights", self._remove_none_value({
+        return await self._client.request_to_api("getMyDefaultAdministratorRights", remove_none_value({
             "for_channels": for_channels
         }))
 
@@ -1172,7 +1173,7 @@ class TelegramBotApi:
             message_id=None,
             reply_markup=None
     ):
-        return await self._client.request_to_api("editMessageText", self._remove_none_value({
+        return await self._client.request_to_api("editMessageText", remove_none_value({
             "chat_id": chat_id,
             "text": text,
             "inline_message_id": inline_message_id,
@@ -1194,7 +1195,7 @@ class TelegramBotApi:
             message_id=None,
             reply_markup=None
     ):
-        return await self._client.request_to_api("editMessageCaption", self._remove_none_value({
+        return await self._client.request_to_api("editMessageCaption", remove_none_value({
             "chat_id": chat_id,
             "caption": caption,
             "inline_message_id": inline_message_id,
@@ -1213,7 +1214,7 @@ class TelegramBotApi:
             message_id=None,
             reply_markup=None
     ):
-        return await self._client.request_to_api("editMessageMedia", self._remove_none_value({
+        return await self._client.request_to_api("editMessageMedia", remove_none_value({
             "chat_id": chat_id,
             "media": media,
             "inline_message_id": inline_message_id,
@@ -1235,7 +1236,7 @@ class TelegramBotApi:
             horizontal_accuracy=None,
             reply_markup=None
     ):
-        return await self._client.request_to_api("editMessageLiveLocation", self._remove_none_value({
+        return await self._client.request_to_api("editMessageLiveLocation", remove_none_value({
             "latitude": latitude,
             "longitude": longitude,
             "chat_id": chat_id,
@@ -1256,7 +1257,7 @@ class TelegramBotApi:
             message_id=None,
             reply_markup=None
     ):
-        return await self._client.request_to_api("editMessageLiveLocation", self._remove_none_value({
+        return await self._client.request_to_api("editMessageLiveLocation", remove_none_value({
             "chat_id": chat_id,
             "inline_message_id": inline_message_id,
             "message_id": message_id,
@@ -1270,7 +1271,7 @@ class TelegramBotApi:
             message_id=None,
             reply_markup=None
     ):
-        return await self._client.request_to_api("editMessageReplyMarkup", self._remove_none_value({
+        return await self._client.request_to_api("editMessageReplyMarkup", remove_none_value({
             "chat_id": chat_id,
             "inline_message_id": inline_message_id,
             "message_id": message_id,
@@ -1283,7 +1284,7 @@ class TelegramBotApi:
             message_id,
             reply_markup=None
     ):
-        return await self._client.request_to_api("stopPoll", self._remove_none_value({
+        return await self._client.request_to_api("stopPoll", remove_none_value({
             "chat_id": chat_id,
             "message_id": message_id,
             "reply_markup": reply_markup
@@ -1294,7 +1295,7 @@ class TelegramBotApi:
             chat_id,
             message_id
     ):
-        return await self._client.request_to_api("deleteMessage", self._remove_none_value({
+        return await self._client.request_to_api("deleteMessage", remove_none_value({
             "chat_id": chat_id,
             "message_id": message_id
         }))
@@ -1311,7 +1312,7 @@ class TelegramBotApi:
             allow_sending_without_reply=None,
             reply_markup=None
     ):
-        return await self._client.request_to_api("sendSticker", self._remove_none_value({
+        return await self._client.request_to_api("sendSticker", remove_none_value({
             "chat_id": chat_id,
             "sticker": sticker,
             "message_thread_id": message_thread_id,
@@ -1327,7 +1328,7 @@ class TelegramBotApi:
             self,
             name
     ):
-        return await self._client.request_to_api("getStickerSet", self._remove_none_value({
+        return await self._client.request_to_api("getStickerSet", remove_none_value({
             "name": name
         }))
 
@@ -1335,7 +1336,7 @@ class TelegramBotApi:
             self,
             custom_emoji_ids
     ):
-        return await self._client.request_to_api("getCustomEmojiStickers", self._remove_none_value({
+        return await self._client.request_to_api("getCustomEmojiStickers", remove_none_value({
             "custom_emoji_ids": custom_emoji_ids
         }))
 
@@ -1345,7 +1346,7 @@ class TelegramBotApi:
             sticker,
             sticker_format
     ):
-        return await self._client.request_to_api("uploadStickerFile", self._remove_none_value({
+        return await self._client.request_to_api("uploadStickerFile", remove_none_value({
             "user_id": user_id,
             "sticker": sticker,
             "sticker_format": sticker_format,
@@ -1361,7 +1362,7 @@ class TelegramBotApi:
             sticker_type=None,
             needs_repainting=None
     ):
-        return await self._client.request_to_api("createNewStickerSet", self._remove_none_value({
+        return await self._client.request_to_api("createNewStickerSet", remove_none_value({
             "user_id": user_id,
             "name": name,
             "title": title,
@@ -1377,7 +1378,7 @@ class TelegramBotApi:
             name,
             sticker
     ):
-        return await self._client.request_to_api("addStickerToSet", self._remove_none_value({
+        return await self._client.request_to_api("addStickerToSet", remove_none_value({
             "user_id": user_id,
             "name": name,
             "sticker": sticker
@@ -1388,7 +1389,7 @@ class TelegramBotApi:
             sticker,
             position
     ):
-        return await self._client.request_to_api("setStickerPositionInSet", self._remove_none_value({
+        return await self._client.request_to_api("setStickerPositionInSet", remove_none_value({
             "sticker": sticker,
             "position": position
         }))
@@ -1397,7 +1398,7 @@ class TelegramBotApi:
             self,
             sticker,
     ):
-        return await self._client.request_to_api("deleteStickerFromSet", self._remove_none_value({
+        return await self._client.request_to_api("deleteStickerFromSet", remove_none_value({
             "sticker": sticker,
         }))
 
@@ -1406,7 +1407,7 @@ class TelegramBotApi:
             sticker,
             emoji_list
     ):
-        return await self._client.request_to_api("setStickerEmojiList", self._remove_none_value({
+        return await self._client.request_to_api("setStickerEmojiList", remove_none_value({
             "sticker": sticker,
             "emoji_list": emoji_list
         }))
@@ -1416,7 +1417,7 @@ class TelegramBotApi:
             sticker,
             keywords=None
     ):
-        return await self._client.request_to_api("setStickerKeywords", self._remove_none_value({
+        return await self._client.request_to_api("setStickerKeywords", remove_none_value({
             "sticker": sticker,
             "keywords": keywords
         }))
@@ -1426,7 +1427,7 @@ class TelegramBotApi:
             sticker,
             mask_position=None
     ):
-        return await self._client.request_to_api("setStickerMaskPosition", self._remove_none_value({
+        return await self._client.request_to_api("setStickerMaskPosition", remove_none_value({
             "sticker": sticker,
             "mask_position": mask_position
         }))
@@ -1436,7 +1437,7 @@ class TelegramBotApi:
             name,
             title
     ):
-        return await self._client.request_to_api("setStickerSetTitle", self._remove_none_value({
+        return await self._client.request_to_api("setStickerSetTitle", remove_none_value({
             "name": name,
             "title": title
         }))
@@ -1447,7 +1448,7 @@ class TelegramBotApi:
             user_id,
             thumbnail=None
     ):
-        return await self._client.request_to_api("setStickerSetThumbnail", self._remove_none_value({
+        return await self._client.request_to_api("setStickerSetThumbnail", remove_none_value({
             "name": name,
             "user_id": user_id,
             "thumbnail": thumbnail
@@ -1458,7 +1459,7 @@ class TelegramBotApi:
             name,
             custom_emoji_id=None
     ):
-        return await self._client.request_to_api("setCustomEmojiStickerSetThumbnail", self._remove_none_value({
+        return await self._client.request_to_api("setCustomEmojiStickerSetThumbnail", remove_none_value({
             "name": name,
             "custom_emoji_id": custom_emoji_id
         }))
@@ -1467,7 +1468,7 @@ class TelegramBotApi:
             self,
             name
     ):
-        return await self._client.request_to_api("deleteStickerSet", self._remove_none_value({
+        return await self._client.request_to_api("deleteStickerSet", remove_none_value({
             "name": name
         }))
 
@@ -1480,7 +1481,7 @@ class TelegramBotApi:
             next_offset=None,
             button=None
     ):
-        return await self._client.request_to_api("answerInlineQuery", self._remove_none_value({
+        return await self._client.request_to_api("answerInlineQuery", remove_none_value({
             "inline_query_id": inline_query_id,
             "results": results,
             "cache_time": cache_time,
@@ -1494,7 +1495,7 @@ class TelegramBotApi:
             web_app_query_id,
             result
     ):
-        return await self._client.request_to_api("answerWebAppQuery", self._remove_none_value({
+        return await self._client.request_to_api("answerWebAppQuery", remove_none_value({
             "web_app_query_id": web_app_query_id,
             "result": result
         }))
@@ -1530,7 +1531,7 @@ class TelegramBotApi:
             allow_sending_without_reply=None,
             reply_markup=None
     ):
-        return await self._client.request_to_api("sendInvoice", self._remove_none_value({
+        return await self._client.request_to_api("sendInvoice", remove_none_value({
             "chat_id": chat_id,
             "title": title,
             "description": description,
@@ -1585,7 +1586,7 @@ class TelegramBotApi:
             send_email_to_provider=None,
             is_flexible=None,
     ):
-        return await self._client.request_to_api("createInvoiceLink", self._remove_none_value({
+        return await self._client.request_to_api("createInvoiceLink", remove_none_value({
             "title": title,
             "description": description,
             "payload": payload,
@@ -1616,7 +1617,7 @@ class TelegramBotApi:
             shipping_options=None,
             error_message=None
     ):
-        return await self._client.request_to_api("answerShippingQuery", self._remove_none_value({
+        return await self._client.request_to_api("answerShippingQuery", remove_none_value({
             "shipping_query_id": shipping_query_id,
             "ok": ok,
             "shipping_options": shipping_options,
@@ -1629,7 +1630,7 @@ class TelegramBotApi:
             ok,
             error_message=None
     ):
-        return await self._client.request_to_api("answerPreCheckoutQuery", self._remove_none_value({
+        return await self._client.request_to_api("answerPreCheckoutQuery", remove_none_value({
             "pre_checkout_query_id": pre_checkout_query_id,
             "ok": ok,
             "error_message": error_message
@@ -1640,7 +1641,7 @@ class TelegramBotApi:
             user_id,
             errors
     ):
-        return await self._client.request_to_api("setPassportDataErrors", self._remove_none_value({
+        return await self._client.request_to_api("setPassportDataErrors", remove_none_value({
             "user_id": user_id,
             "errors": errors
         }))
@@ -1656,7 +1657,7 @@ class TelegramBotApi:
             allow_sending_without_reply=None,
             reply_markup=None
     ):
-        return await self._client.request_to_api("sendGame", self._remove_none_value({
+        return await self._client.request_to_api("sendGame", remove_none_value({
             "chat_id": chat_id,
             "game_short_name": game_short_name,
             "message_thread_id": message_thread_id,
@@ -1676,7 +1677,7 @@ class TelegramBotApi:
             message_id=None,
             inline_message_id=None
     ):
-        return await self._client.request_to_api("setGameScore", self._remove_none_value({
+        return await self._client.request_to_api("setGameScore", remove_none_value({
             "user_id": user_id,
             "score": score,
             "force": force,
@@ -1692,7 +1693,7 @@ class TelegramBotApi:
             message_id=None,
             inline_message_id=None
     ):
-        return await self._client.request_to_api("getGameHighScores", self._remove_none_value({
+        return await self._client.request_to_api("getGameHighScores", remove_none_value({
             "user_id": user_id,
             "chat_id": chat_id,
             "message_id": message_id,

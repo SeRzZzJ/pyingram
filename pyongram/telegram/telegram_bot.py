@@ -84,7 +84,9 @@ class TelegramBotLongPolling(TelegramBot):
 
     async def _handle_router(self, update, router, session):
         for handler in filter(
-                lambda hnd: hnd.update_type == list(update.keys())[-1] and hnd.field in update[hnd.update_type],
+                lambda hnd: hnd.update_type == list(update.keys())[-1] and hnd.field in update[
+                    hnd.update_type] or hnd.update_type == list(update.keys())[
+                                -1] and hnd.field == "" or hnd.update_type == "" and hnd.field == "",
                 router.handlers):
             if handler.out_data(update[handler.update_type]):
                 await handler.handle(Context(update, self._bot, session))

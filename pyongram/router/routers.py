@@ -26,6 +26,55 @@ class BaseRouter(ABC):
                                               out_data=trigger,
                                               is_next_handler=is_next_handler)
 
+    def on_all(self, *, is_next_handler=False):
+        return self.on(update_type="", field="", trigger=lambda _: True, is_next_handler=is_next_handler)
+
+    def on_message(self, *, is_next_handler=False):
+        return self.on(update_type="message", field="", trigger=lambda _: True, is_next_handler=is_next_handler)
+
+    def on_edited_message(self, *, is_next_handler=False):
+        return self.on(update_type="edited_message", field="", trigger=lambda _: True, is_next_handler=is_next_handler)
+
+    def on_channel_post(self, *, is_next_handler=False):
+        return self.on(update_type="channel_post", field="", trigger=lambda _: True, is_next_handler=is_next_handler)
+
+    def on_edited_channel_post(self, *, is_next_handler=False):
+        return self.on(update_type="edited_channel_post", field="", trigger=lambda _: True,
+                       is_next_handler=is_next_handler)
+
+    def on_inline_query(self, *, is_next_handler=False):
+        return self.on(update_type="inline_query", field="", trigger=lambda _: True, is_next_handler=is_next_handler)
+
+    def on_chosen_inline_result(self, *, is_next_handler=False):
+        return self.on(update_type="chosen_inline_result", field="", trigger=lambda _: True,
+                       is_next_handler=is_next_handler)
+
+    def on_callback_query(self, *, is_next_handler=False):
+        return self.on(update_type="callback_query", field="", trigger=lambda _: True, is_next_handler=is_next_handler)
+
+    def on_shipping_query(self, *, is_next_handler=False):
+        return self.on(update_type="shipping_query", field="", trigger=lambda _: True, is_next_handler=is_next_handler)
+
+    def on_pre_checkout_query(self, *, is_next_handler=False):
+        return self.on(update_type="pre_checkout_query", field="", trigger=lambda _: True,
+                       is_next_handler=is_next_handler)
+
+    def on_poll(self, *, is_next_handler=False):
+        return self.on(update_type="poll", field="", trigger=lambda _: True, is_next_handler=is_next_handler)
+
+    def on_poll_answer(self, *, is_next_handler=False):
+        return self.on(update_type="poll_answer", field="", trigger=lambda _: True, is_next_handler=is_next_handler)
+
+    def on_my_chat_member(self, *, is_next_handler=False):
+        return self.on(update_type="my_chat_member", field="", trigger=lambda _: True, is_next_handler=is_next_handler)
+
+    def on_chat_member(self, *, is_next_handler=False):
+        return self.on(update_type="chat_member", field="", trigger=lambda _: True, is_next_handler=is_next_handler)
+
+    def on_chat_join_request(self, *, is_next_handler=False):
+        return self.on(update_type="chat_join_request", field="", trigger=lambda _: True,
+                       is_next_handler=is_next_handler)
+
     def _returned_build_decorator(self, update_type, field, out_data=None, is_next_handler=False):
         def decorator(handler_fn):
             self._handlers.append(

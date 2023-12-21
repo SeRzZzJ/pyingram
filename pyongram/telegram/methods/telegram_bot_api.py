@@ -6,17 +6,6 @@ class TelegramBotApi:
     def __init__(self, token: str):
         self._client = ApiClient(f"https://api.telegram.org/bot{token}")
 
-    # @staticmethod
-    # def _remove_none_value(params: dict):
-    #     remove_keys = []
-    #     for key in params.keys():
-    #         if params[key] is None:
-    #             remove_keys.append(key)
-    #
-    #     for key in remove_keys:
-    #         params.pop(key)
-    #     return params
-
     async def get_updates(
             self,
             offset,

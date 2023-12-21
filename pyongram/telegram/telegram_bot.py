@@ -65,22 +65,22 @@ class TelegramBotLongPolling(TelegramBot):
             self._sessions.append(MemorySession(update))
 
         update_parser = UpdateParser(update)
-        session = [session for session in self._sessions if session.user_id == update_parser.update_from_id()]
+        sessions = [session for session in self._sessions if session.user_id == update_parser.update_from_id()]
 
-        if not session:
+        if not sessions:
             self._sessions.append(MemorySession(update))
 
         labeled_router = [labeled_router for labeled_router in self._routers if
                           (isinstance(labeled_router, LabeledRouter) and
-                           session[0].check_the_session_form(
+                           sessions[0].check_the_session_form(
                                labeled_router.label))]
         if labeled_router:
-            await self._handle_router(update, labeled_router[0], session[0])
+            await self._handle_router(update, labeled_router[0], sessions[0])
         else:
             for router in self._routers:
                 if isinstance(router, LabeledRouter):
                     continue
-                await self._handle_router(update, router, session[0])
+                await self._handle_router(update, router, sessions[0])
 
     async def _handle_router(self, update, router, session):
         for handler in filter(

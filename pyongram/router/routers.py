@@ -7,7 +7,9 @@ from pyongram.router.handler import Handler
 class BaseRouter(ABC):
     def __init__(self):
         self._handlers = []
-        self._update_type = None
+
+    def __repr__(self):
+        return f"{self.__class__.__name__}(self._handlers={self._handlers})"
 
     @property
     def handlers(self):

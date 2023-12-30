@@ -9,6 +9,13 @@ class Handler:
         self._handler_fn = handler_fn
         self._is_next_handler = is_next_handler
 
+    def __repr__(self):
+        return (f"{self.__class__.__name__}(self._update_type={self._update_type}, "
+                f"self._field={self._field}, "
+                f"self._out_data={self._out_data}"
+                f"self._handler_fn={self._handler_fn}"
+                f"self._is_next_handler={self._is_next_handler})")
+
     @property
     def update_type(self):
         return self._update_type
@@ -30,4 +37,3 @@ class Handler:
 
     async def handle(self, context):
         await self._handler_fn(context)
-

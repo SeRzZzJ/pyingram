@@ -10,6 +10,11 @@ class Context:
         self._bot = bot
         self._session = session
 
+    def __repr__(self):
+        return (f"{self.__class__.__name__}(self._update={self._update}, "
+                f"self._bot={self._bot}, "
+                f"self._session={self._session})")
+
     @property
     def update(self):
         return self._update

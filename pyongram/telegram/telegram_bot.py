@@ -15,6 +15,11 @@ class TelegramBot:
         self._routers = []
         self._sessions = []
 
+    def __repr__(self):
+        return (f"{self.__class__.__name__}(self._bot={self._bot}, "
+                f"self._routers={self._routers}, "
+                f"self._sessions={self._sessions})")
+
     def use_router(self, router):
         self._routers.append(router)
 
@@ -94,6 +99,10 @@ class TelegramBotLongPolling(TelegramBot):
                     continue
                 else:
                     break
+
+
+telegram_bot = TelegramBotLongPolling("")
+print(telegram_bot)
 
 
 class TelegramBotWebHooks(TelegramBot):

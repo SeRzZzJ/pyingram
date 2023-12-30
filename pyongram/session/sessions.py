@@ -39,6 +39,11 @@ class MemorySession(BaseSession, ABC):
         self._data = {}
         self._label = ""
 
+    def __repr__(self):
+        return (f"{self.__class__.__name__}(self._user_id={self._user_id}, "
+                f"self._data={self._data}, "
+                f"self._label={self._label})")
+
     @property
     def data(self):
         return self._data

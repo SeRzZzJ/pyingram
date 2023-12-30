@@ -48,6 +48,10 @@ class BaseRouter(ABC):
         return self.on(update_type="message_reaction", field="", trigger=lambda _: True,
                        is_next_handler=is_next_handler)
 
+    def on_message_reaction_count(self, *, is_next_handler=False):
+        return self.on(update_type="message_reaction_count", field="", trigger=lambda _: True,
+                       is_next_handler=is_next_handler)
+
     def on_inline_query(self, *, is_next_handler=False):
         return self.on(update_type="inline_query", field="", trigger=lambda _: True, is_next_handler=is_next_handler)
 
@@ -846,6 +850,10 @@ class Router(BaseRouter):
 
     def message_reaction_new_reaction(self, *, trigger=None, is_next_handler=False):
         return self.on(update_type="message_reaction", field="new_reaction", trigger=trigger,
+                       is_next_handler=is_next_handler)
+
+    def message_reaction_count_reactions(self, *, trigger=None, is_next_handler=False):
+        return self.on(update_type="message_reaction_count", field="reactions", trigger=trigger,
                        is_next_handler=is_next_handler)
 
     def inline_query(self, *, trigger=None, is_next_handler=False):

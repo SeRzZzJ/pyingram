@@ -43,6 +43,7 @@ class TelegramBotLongPolling(TelegramBot):
                 "edited_message",
                 "channel_post",
                 "edited_channel_post",
+                "message_reaction",
                 "inline_query",
                 "chosen_inline_result",
                 "callback_query",

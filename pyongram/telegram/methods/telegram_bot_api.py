@@ -1690,3 +1690,16 @@ class TelegramBotApi:
             "chat_id": chat_id,
             "message_id": message_id,
             "inline_message_id": inline_message_id}))
+
+    async def set_message_reaction(
+            self,
+            chat_id,
+            message_id=None,
+            reaction=None,
+            is_big=None
+    ):
+        return await self._client.request_to_api("setMessageReaction", remove_none_value({
+            "chat_id": chat_id,
+            "message_id": message_id,
+            "reaction": reaction,
+            "is_big": is_big}))

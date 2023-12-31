@@ -114,7 +114,7 @@ class BaseRouter(ABC):
         cls._check_handler_trigger_and_field_isinstance(field=field, trigger=trigger)
 
 
-class Router(BaseRouter):
+class _CommandRouter(BaseRouter):
     def __init__(self):
         super().__init__()
 
@@ -147,6 +147,11 @@ class Router(BaseRouter):
                        field="text",
                        trigger=lambda msg: msg["text"] == "/admin",
                        is_next_handler=is_next_handler)
+
+
+class _MessageRouter(BaseRouter):
+    def __init__(self):
+        super().__init__()
 
     def text(self, *, trigger, is_next_handler=False):
         return self.on(update_type="message", field="text", trigger=trigger, is_next_handler=is_next_handler)
@@ -311,6 +316,11 @@ class Router(BaseRouter):
 
     def web_app_data(self, *, trigger=None, is_next_handler=False):
         return self.on(update_type="message", field="web_app_data", trigger=trigger, is_next_handler=is_next_handler)
+
+
+class _EditedRouter(BaseRouter):
+    def __init__(self):
+        super().__init__()
 
     def edited_text(self, *, trigger, is_next_handler=False):
         return self.on(update_type="edited_message", field="text", trigger=trigger, is_next_handler=is_next_handler)
@@ -485,6 +495,11 @@ class Router(BaseRouter):
         return self.on(update_type="edited_message", field="web_app_data", trigger=trigger,
                        is_next_handler=is_next_handler)
 
+
+class _ChannelPostRouter(BaseRouter):
+    def __init__(self):
+        super().__init__()
+
     def channel_post_text(self, *, trigger, is_next_handler=False):
         return self.on(update_type="channel_post", field="text", trigger=trigger, is_next_handler=is_next_handler)
 
@@ -655,6 +670,11 @@ class Router(BaseRouter):
     def channel_post_web_app_data(self, *, trigger=None, is_next_handler=False):
         return self.on(update_type="channel_post", field="web_app_data", trigger=trigger,
                        is_next_handler=is_next_handler)
+
+
+class _EditedChannelPostRouter(BaseRouter):
+    def __init__(self):
+        super().__init__()
 
     def edited_channel_post_text(self, *, trigger, is_next_handler=False):
         return self.on(update_type="edited_channel_post", field="text", trigger=trigger,
@@ -844,6 +864,11 @@ class Router(BaseRouter):
         return self.on(update_type="edited_channel_post", field="web_app_data", trigger=trigger,
                        is_next_handler=is_next_handler)
 
+
+class _MessageReactionRouter(BaseRouter):
+    def __init__(self):
+        super().__init__()
+
     def message_reaction_old_reaction(self, *, trigger=None, is_next_handler=False):
         return self.on(update_type="message_reaction", field="old_reaction", trigger=trigger,
                        is_next_handler=is_next_handler)
@@ -852,21 +877,46 @@ class Router(BaseRouter):
         return self.on(update_type="message_reaction", field="new_reaction", trigger=trigger,
                        is_next_handler=is_next_handler)
 
+
+class _MessageReactionCountRouter(BaseRouter):
+    def __init__(self):
+        super().__init__()
+
     def message_reaction_count_reactions(self, *, trigger=None, is_next_handler=False):
         return self.on(update_type="message_reaction_count", field="reactions", trigger=trigger,
                        is_next_handler=is_next_handler)
+
+
+class _InlineQueryRouter(BaseRouter):
+    def __init__(self):
+        super().__init__()
 
     def inline_query(self, *, trigger=None, is_next_handler=False):
         return self.on(update_type="inline_query", field="query", trigger=trigger,
                        is_next_handler=is_next_handler)
 
+
+class _ChosenInlineResultRouter(BaseRouter):
+    def __init__(self):
+        super().__init__()
+
     def chosen_inline_result(self, *, trigger=None, is_next_handler=False):
         return self.on(update_type="chosen_inline_result", field="query", trigger=trigger,
                        is_next_handler=is_next_handler)
 
+
+class _CallbackQueryRouter(BaseRouter):
+    def __init__(self):
+        super().__init__()
+
     def callback_query(self, *, trigger=None, is_next_handler=False):
         return self.on(update_type="callback_query", field="data", trigger=trigger,
                        is_next_handler=is_next_handler)
+
+
+class _ShippingQueryRouter(BaseRouter):
+    def __init__(self):
+        super().__init__()
 
     def shipping_query_invoice_payload(self, *, trigger=None, is_next_handler=False):
         return self.on(update_type="shipping_query", field="invoice_payload", trigger=trigger,
@@ -876,6 +926,11 @@ class Router(BaseRouter):
         return self.on(update_type="shipping_query", field="shipping_address", trigger=trigger,
                        is_next_handler=is_next_handler)
 
+
+class _PreCheckoutQueryRouter(BaseRouter):
+    def __init__(self):
+        super().__init__()
+
     def pre_checkout_query_invoice_payload(self, *, trigger=None, is_next_handler=False):
         return self.on(update_type="pre_checkout_query", field="invoice_payload", trigger=trigger,
                        is_next_handler=is_next_handler)
@@ -883,6 +938,11 @@ class Router(BaseRouter):
     def pre_checkout_query_order_info(self, *, trigger=None, is_next_handler=False):
         return self.on(update_type="pre_checkout_query", field="order_info", trigger=trigger,
                        is_next_handler=is_next_handler)
+
+
+class _PollRouter(BaseRouter):
+    def __init__(self):
+        super().__init__()
 
     def poll_question(self, *, trigger=None, is_next_handler=False):
         return self.on(update_type="poll", field="question", trigger=trigger,
@@ -892,6 +952,11 @@ class Router(BaseRouter):
         return self.on(update_type="poll", field="type", trigger=trigger,
                        is_next_handler=is_next_handler)
 
+
+class _PollAnswerRouter(BaseRouter):
+    def __init__(self):
+        super().__init__()
+
     def poll_answer_voter_chat(self, *, trigger=None, is_next_handler=False):
         return self.on(update_type="poll_answer", field="voter_chat", trigger=trigger,
                        is_next_handler=is_next_handler)
@@ -899,6 +964,11 @@ class Router(BaseRouter):
     def poll_answer_user(self, *, trigger=None, is_next_handler=False):
         return self.on(update_type="poll_answer", field="user", trigger=trigger,
                        is_next_handler=is_next_handler)
+
+
+class _MyChatMemberRouter(BaseRouter):
+    def __init__(self):
+        super().__init__()
 
     def my_chat_member_old_chat_member(self, *, trigger=None, is_next_handler=False):
         return self.on(update_type="my_chat_member", field="old_chat_member", trigger=trigger,
@@ -908,6 +978,11 @@ class Router(BaseRouter):
         return self.on(update_type="my_chat_member", field="new_chat_member", trigger=trigger,
                        is_next_handler=is_next_handler)
 
+
+class _ChatMemberRouter(BaseRouter):
+    def __init__(self):
+        super().__init__()
+
     def chat_member_old_chat_member(self, *, trigger=None, is_next_handler=False):
         return self.on(update_type="chat_member", field="old_chat_member", trigger=trigger,
                        is_next_handler=is_next_handler)
@@ -916,12 +991,54 @@ class Router(BaseRouter):
         return self.on(update_type="chat_member", field="new_chat_member", trigger=trigger,
                        is_next_handler=is_next_handler)
 
+
+class _ChatJoinRequestRouter(BaseRouter):
+    def __init__(self):
+        super().__init__()
+
     def chat_join_request_user_chat_id(self, *, trigger=None, is_next_handler=False):
         return self.on(update_type="chat_join_request", field="user_chat_id", trigger=trigger,
                        is_next_handler=is_next_handler)
 
 
-class LabeledRouter(Router):
+class Router(_ChatJoinRequestRouter,
+             _ChatMemberRouter,
+             _MyChatMemberRouter,
+             _PollAnswerRouter,
+             _PollRouter,
+             _PreCheckoutQueryRouter,
+             _ShippingQueryRouter,
+             _CallbackQueryRouter,
+             _ChosenInlineResultRouter,
+             _InlineQueryRouter,
+             _MessageReactionCountRouter,
+             _MessageReactionRouter,
+             _EditedChannelPostRouter,
+             _ChannelPostRouter,
+             _MessageRouter,
+             _CommandRouter,
+             BaseRouter):
+    def __init__(self):
+        super().__init__()
+
+
+class LabeledRouter(_ChatJoinRequestRouter,
+                    _ChatMemberRouter,
+                    _MyChatMemberRouter,
+                    _PollAnswerRouter,
+                    _PollRouter,
+                    _PreCheckoutQueryRouter,
+                    _ShippingQueryRouter,
+                    _CallbackQueryRouter,
+                    _ChosenInlineResultRouter,
+                    _InlineQueryRouter,
+                    _MessageReactionCountRouter,
+                    _MessageReactionRouter,
+                    _EditedChannelPostRouter,
+                    _ChannelPostRouter,
+                    _MessageRouter,
+                    _CommandRouter,
+                    BaseRouter):
     def __init__(self, label):
         super().__init__()
         self._label = label

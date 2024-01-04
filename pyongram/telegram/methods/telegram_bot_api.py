@@ -61,8 +61,7 @@ class TelegramBotApi:
             disable_web_page_preview=None,
             disable_notification=None,
             protect_content=None,
-            reply_to_message_id=None,
-            allow_sending_without_reply=None,
+            reply_parameters=None,
             reply_markup=None
     ):
         return await self._client.request_to_api("sendMessage", remove_none_value({
@@ -74,8 +73,7 @@ class TelegramBotApi:
             "disable_web_page_preview": disable_web_page_preview,
             "disable_notification": disable_notification,
             "protect_content": protect_content,
-            "reply_to_message_id": reply_to_message_id,
-            "allow_sending_without_reply": allow_sending_without_reply,
+            "reply_parameters": reply_parameters,
             "reply_markup": reply_markup
         }))
 
@@ -108,8 +106,7 @@ class TelegramBotApi:
             caption_entities=None,
             disable_notification=None,
             protect_content=None,
-            reply_to_message_id=None,
-            allow_sending_without_reply=None,
+            reply_parameters=None,
             reply_markup=None
     ):
         return await self._client.request_to_api("copyMessage", remove_none_value({
@@ -122,8 +119,7 @@ class TelegramBotApi:
             "caption_entities": caption_entities,
             "disable_notification": disable_notification,
             "protect_content": protect_content,
-            "reply_to_message_id": reply_to_message_id,
-            "allow_sending_without_reply": allow_sending_without_reply,
+            "reply_parameters": reply_parameters,
             "reply_markup": reply_markup
         }))
 
@@ -138,8 +134,7 @@ class TelegramBotApi:
             has_spoiler=None,
             disable_notification=None,
             protect_content=None,
-            reply_to_message_id=None,
-            allow_sending_without_reply=None,
+            reply_parameters=None,
             reply_markup=None
     ):
         return await self._client.request_to_api("sendPhoto", remove_none_value({
@@ -152,8 +147,7 @@ class TelegramBotApi:
             "has_spoiler": has_spoiler,
             "disable_notification": disable_notification,
             "protect_content": protect_content,
-            "reply_to_message_id": reply_to_message_id,
-            "allow_sending_without_reply": allow_sending_without_reply,
+            "reply_parameters": reply_parameters,
             "reply_markup": reply_markup
         }))
 
@@ -171,8 +165,7 @@ class TelegramBotApi:
             thumbnail=None,
             disable_notification=None,
             protect_content=None,
-            reply_to_message_id=None,
-            allow_sending_without_reply=None,
+            reply_parameters=None,
             reply_markup=None
     ):
         return await self._client.request_to_api("sendAudio", remove_none_value({
@@ -188,8 +181,7 @@ class TelegramBotApi:
             "thumbnail": thumbnail,
             "disable_notification": disable_notification,
             "protect_content": protect_content,
-            "reply_to_message_id": reply_to_message_id,
-            "allow_sending_without_reply": allow_sending_without_reply,
+            "reply_parameters": reply_parameters,
             "reply_markup": reply_markup
         }))
 
@@ -205,8 +197,7 @@ class TelegramBotApi:
             disable_notification=None,
             disable_content_type_detection=None,
             protect_content=None,
-            reply_to_message_id=None,
-            allow_sending_without_reply=None,
+            reply_parameters=None,
             reply_markup=None
     ):
         return await self._client.request_to_api("sendDocument", remove_none_value({
@@ -220,8 +211,7 @@ class TelegramBotApi:
             "disable_notification": disable_notification,
             "disable_content_type_detection": disable_content_type_detection,
             "protect_content": protect_content,
-            "reply_to_message_id": reply_to_message_id,
-            "allow_sending_without_reply": allow_sending_without_reply,
+            "reply_parameters": reply_parameters,
             "reply_markup": reply_markup
         }))
 
@@ -241,8 +231,7 @@ class TelegramBotApi:
             supports_streaming=None,
             disable_notification=None,
             protect_content=None,
-            reply_to_message_id=None,
-            allow_sending_without_reply=None,
+            reply_parameters=None,
             reply_markup=None
     ):
         return await self._client.request_to_api("sendVideo", remove_none_value({
@@ -260,8 +249,7 @@ class TelegramBotApi:
             "has_spoiler": has_spoiler,
             "supports_streaming": supports_streaming,
             "protect_content": protect_content,
-            "reply_to_message_id": reply_to_message_id,
-            "allow_sending_without_reply": allow_sending_without_reply,
+            "reply_parameters": reply_parameters,
             "reply_markup": reply_markup
         }))
 
@@ -280,8 +268,7 @@ class TelegramBotApi:
             has_spoiler=None,
             disable_notification=None,
             protect_content=None,
-            reply_to_message_id=None,
-            allow_sending_without_reply=None,
+            reply_parameters=None,
             reply_markup=None
     ):
         return await self._client.request_to_api("sendAnimation", remove_none_value({
@@ -298,8 +285,7 @@ class TelegramBotApi:
             "disable_notification": disable_notification,
             "has_spoiler": has_spoiler,
             "protect_content": protect_content,
-            "reply_to_message_id": reply_to_message_id,
-            "allow_sending_without_reply": allow_sending_without_reply,
+            "reply_parameters": reply_parameters,
             "reply_markup": reply_markup
         }))
 
@@ -314,8 +300,7 @@ class TelegramBotApi:
             duration=None,
             disable_notification=None,
             protect_content=None,
-            reply_to_message_id=None,
-            allow_sending_without_reply=None,
+            reply_parameters=None,
             reply_markup=None
     ):
         return await self._client.request_to_api("sendVoice", remove_none_value({
@@ -328,8 +313,7 @@ class TelegramBotApi:
             "duration": duration,
             "disable_notification": disable_notification,
             "protect_content": protect_content,
-            "reply_to_message_id": reply_to_message_id,
-            "allow_sending_without_reply": allow_sending_without_reply,
+            "reply_parameters": reply_parameters,
             "reply_markup": reply_markup
         }))
 
@@ -346,8 +330,7 @@ class TelegramBotApi:
             thumbnail=None,
             disable_notification=None,
             protect_content=None,
-            reply_to_message_id=None,
-            allow_sending_without_reply=None,
+            reply_parameters=None,
             reply_markup=None
     ):
         return await self._client.request_to_api("sendVideoNote", remove_none_value({
@@ -362,8 +345,7 @@ class TelegramBotApi:
             "thumbnail": thumbnail,
             "disable_notification": disable_notification,
             "protect_content": protect_content,
-            "reply_to_message_id": reply_to_message_id,
-            "allow_sending_without_reply": allow_sending_without_reply,
+            "reply_parameters": reply_parameters,
             "reply_markup": reply_markup
         }))
 
@@ -374,8 +356,7 @@ class TelegramBotApi:
             message_thread_id=None,
             disable_notification=None,
             protect_content=None,
-            reply_to_message_id=None,
-            allow_sending_without_reply=None
+            reply_parameters=None
     ):
         return await self._client.request_to_api("sendMediaGroup", remove_none_value({
             "chat_id": chat_id,
@@ -383,8 +364,7 @@ class TelegramBotApi:
             "message_thread_id": message_thread_id,
             "disable_notification": disable_notification,
             "protect_content": protect_content,
-            "reply_to_message_id": reply_to_message_id,
-            "allow_sending_without_reply": allow_sending_without_reply
+            "reply_parameters": reply_parameters,
         }))
 
     async def send_location(
@@ -399,8 +379,7 @@ class TelegramBotApi:
             horizontal_accuracy=None,
             disable_notification=None,
             protect_content=None,
-            reply_to_message_id=None,
-            allow_sending_without_reply=None,
+            reply_parameters=None,
             reply_markup=None
     ):
         return await self._client.request_to_api("sendLocation", remove_none_value({
@@ -414,8 +393,7 @@ class TelegramBotApi:
             "horizontal_accuracy": horizontal_accuracy,
             "disable_notification": disable_notification,
             "protect_content": protect_content,
-            "reply_to_message_id": reply_to_message_id,
-            "allow_sending_without_reply": allow_sending_without_reply,
+            "reply_parameters": reply_parameters,
             "reply_markup": reply_markup
         }))
 
@@ -433,8 +411,7 @@ class TelegramBotApi:
             google_place_type=None,
             disable_notification=None,
             protect_content=None,
-            reply_to_message_id=None,
-            allow_sending_without_reply=None,
+            reply_parameters=None,
             reply_markup=None
     ):
         return await self._client.request_to_api("sendVenue", remove_none_value({
@@ -450,8 +427,7 @@ class TelegramBotApi:
             "google_place_type": google_place_type,
             "disable_notification": disable_notification,
             "protect_content": protect_content,
-            "reply_to_message_id": reply_to_message_id,
-            "allow_sending_without_reply": allow_sending_without_reply,
+            "reply_parameters": reply_parameters,
             "reply_markup": reply_markup
         }))
 
@@ -465,8 +441,7 @@ class TelegramBotApi:
             vcard=None,
             disable_notification=None,
             protect_content=None,
-            reply_to_message_id=None,
-            allow_sending_without_reply=None,
+            reply_parameters=None,
             reply_markup=None
     ):
         return await self._client.request_to_api("sendContact", remove_none_value({
@@ -478,8 +453,7 @@ class TelegramBotApi:
             "message_thread_id": message_thread_id,
             "disable_notification": disable_notification,
             "protect_content": protect_content,
-            "reply_to_message_id": reply_to_message_id,
-            "allow_sending_without_reply": allow_sending_without_reply,
+            "reply_parameters": reply_parameters,
             "reply_markup": reply_markup
         }))
 
@@ -501,8 +475,7 @@ class TelegramBotApi:
             is_closed=None,
             disable_notification=None,
             protect_content=None,
-            reply_to_message_id=None,
-            allow_sending_without_reply=None,
+            reply_parameters=None,
             reply_markup=None
     ):
         return await self._client.request_to_api("sendPoll", remove_none_value({
@@ -522,8 +495,7 @@ class TelegramBotApi:
             "is_closed": is_closed,
             "disable_notification": disable_notification,
             "protect_content": protect_content,
-            "reply_to_message_id": reply_to_message_id,
-            "allow_sending_without_reply": allow_sending_without_reply,
+            "reply_parameters": reply_parameters,
             "reply_markup": reply_markup
         }))
 
@@ -534,8 +506,7 @@ class TelegramBotApi:
             message_thread_id=None,
             disable_notification=None,
             protect_content=None,
-            reply_to_message_id=None,
-            allow_sending_without_reply=None,
+            reply_parameters=None,
             reply_markup=None
     ):
         return await self._client.request_to_api("sendDice", remove_none_value({
@@ -544,8 +515,7 @@ class TelegramBotApi:
             "message_thread_id": message_thread_id,
             "disable_notification": disable_notification,
             "protect_content": protect_content,
-            "reply_to_message_id": reply_to_message_id,
-            "allow_sending_without_reply": allow_sending_without_reply,
+            "reply_parameters": reply_parameters,
             "reply_markup": reply_markup
         }))
 
@@ -1519,8 +1489,7 @@ class TelegramBotApi:
             is_flexible=None,
             disable_notification=None,
             protect_content=None,
-            reply_to_message_id=None,
-            allow_sending_without_reply=None,
+            reply_parameters=None,
             reply_markup=None
     ):
         return await self._client.request_to_api("sendInvoice", remove_none_value({
@@ -1549,8 +1518,7 @@ class TelegramBotApi:
             "is_flexible": is_flexible,
             "disable_notification": disable_notification,
             "protect_content": protect_content,
-            "reply_to_message_id": reply_to_message_id,
-            "allow_sending_without_reply": allow_sending_without_reply,
+            "reply_parameters": reply_parameters,
             "reply_markup": reply_markup}))
 
     async def create_invoice_link(
@@ -1645,8 +1613,7 @@ class TelegramBotApi:
             message_thread_id=None,
             disable_notification=None,
             protect_content=None,
-            reply_to_message_id=None,
-            allow_sending_without_reply=None,
+            reply_parameters=None,
             reply_markup=None
     ):
         return await self._client.request_to_api("sendGame", remove_none_value({
@@ -1655,8 +1622,7 @@ class TelegramBotApi:
             "message_thread_id": message_thread_id,
             "disable_notification": disable_notification,
             "protect_content": protect_content,
-            "reply_to_message_id": reply_to_message_id,
-            "allow_sending_without_reply": allow_sending_without_reply,
+            "reply_parameters": reply_parameters,
             "reply_markup": reply_markup}))
 
     async def set_game_score(

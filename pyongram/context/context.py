@@ -43,8 +43,7 @@ class Context:
                     disable_web_page_preview=None,
                     disable_notification=None,
                     protect_content=None,
-                    reply_to_message_id=None,
-                    allow_sending_without_reply=None,
+                    reply_parameters=None,
                     reply_markup=None):
         return await self._bot.send_message(self._is_none(chat_id),
                                             text,
@@ -54,8 +53,7 @@ class Context:
                                             disable_web_page_preview,
                                             disable_notification,
                                             protect_content,
-                                            reply_to_message_id,
-                                            allow_sending_without_reply,
+                                            reply_parameters,
                                             reply_markup
                                             )
 
@@ -91,8 +89,7 @@ class Context:
             caption_entities=None,
             disable_notification=None,
             protect_content=None,
-            reply_to_message_id=None,
-            allow_sending_without_reply=None,
+            reply_parameters=None,
             reply_markup=None):
         return await self._bot.copy_message(self._is_none(chat_id),
                                             from_chat_id,
@@ -103,8 +100,7 @@ class Context:
                                             caption_entities,
                                             disable_notification,
                                             protect_content,
-                                            reply_to_message_id,
-                                            allow_sending_without_reply,
+                                            reply_parameters,
                                             reply_markup)
 
     async def reply_with_photo(
@@ -119,8 +115,7 @@ class Context:
             has_spoiler=None,
             disable_notification=None,
             protect_content=None,
-            reply_to_message_id=None,
-            allow_sending_without_reply=None,
+            reply_parameters=None,
             reply_markup=None):
         return self._bot.send_photo(self._is_none(chat_id),
                                     photo,
@@ -131,8 +126,7 @@ class Context:
                                     has_spoiler,
                                     disable_notification,
                                     protect_content,
-                                    reply_to_message_id,
-                                    allow_sending_without_reply,
+                                    reply_parameters,
                                     reply_markup)
 
     async def reply_with_media_group(
@@ -143,15 +137,13 @@ class Context:
             message_thread_id=None,
             disable_notification=None,
             protect_content=None,
-            reply_to_message_id=None,
-            allow_sending_without_reply=None):
+            reply_parameters=None):
         return await self._bot.send_media_group(self._is_none(chat_id),
                                                 media,
                                                 message_thread_id,
                                                 disable_notification,
                                                 protect_content,
-                                                reply_to_message_id,
-                                                allow_sending_without_reply)
+                                                reply_parameters)
 
     async def reply_with_audio(
             self,
@@ -167,8 +159,7 @@ class Context:
             thumbnail=None,
             disable_notification=None,
             protect_content=None,
-            reply_to_message_id=None,
-            allow_sending_without_reply=None,
+            reply_parameters=None,
             reply_markup=None):
         return await self._bot.send_audio(self._is_none(chat_id),
                                           audio,
@@ -182,8 +173,7 @@ class Context:
                                           thumbnail,
                                           disable_notification,
                                           protect_content,
-                                          reply_to_message_id,
-                                          allow_sending_without_reply,
+                                          reply_parameters,
                                           reply_markup)
 
     async def reply_with_dice(
@@ -194,16 +184,14 @@ class Context:
             message_thread_id=None,
             disable_notification=None,
             protect_content=None,
-            reply_to_message_id=None,
-            allow_sending_without_reply=None,
+            reply_parameters=None,
             reply_markup=None):
         return await self._bot.send_dice(self._is_none(chat_id),
                                          emoji,
                                          message_thread_id,
                                          disable_notification,
                                          protect_content,
-                                         reply_to_message_id,
-                                         allow_sending_without_reply,
+                                         reply_parameters,
                                          reply_markup)
 
     async def reply_with_document(
@@ -219,8 +207,7 @@ class Context:
             disable_notification=None,
             disable_content_type_detection=None,
             protect_content=None,
-            reply_to_message_id=None,
-            allow_sending_without_reply=None,
+            reply_parameters=None,
             reply_markup=None):
         return await self._bot.send_document(self._is_none(chat_id),
                                              document,
@@ -232,8 +219,7 @@ class Context:
                                              disable_notification,
                                              disable_content_type_detection,
                                              protect_content,
-                                             reply_to_message_id,
-                                             allow_sending_without_reply,
+                                             reply_parameters,
                                              reply_markup)
 
     async def reply_with_sticker(self,
@@ -244,8 +230,7 @@ class Context:
                                  emoji=None,
                                  disable_notification=None,
                                  protect_content=None,
-                                 reply_to_message_id=None,
-                                 allow_sending_without_reply=None,
+                                 reply_parameters=None,
                                  reply_markup=None):
         return await self._bot.send_sticker(self._is_none(chat_id),
                                             sticker,
@@ -253,8 +238,7 @@ class Context:
                                             emoji,
                                             disable_notification,
                                             protect_content,
-                                            reply_to_message_id,
-                                            allow_sending_without_reply,
+                                            reply_parameters,
                                             reply_markup)
 
     async def reply_with_video(
@@ -274,8 +258,7 @@ class Context:
             supports_streaming=None,
             disable_notification=None,
             protect_content=None,
-            reply_to_message_id=None,
-            allow_sending_without_reply=None,
+            reply_parameters=None,
             reply_markup=None):
         return await self._bot.send_video(self._is_none(chat_id),
                                           video,
@@ -291,8 +274,7 @@ class Context:
                                           supports_streaming,
                                           disable_notification,
                                           protect_content,
-                                          reply_to_message_id,
-                                          allow_sending_without_reply,
+                                          reply_parameters,
                                           reply_markup)
 
     async def reply_with_animation(
@@ -311,8 +293,7 @@ class Context:
             has_spoiler=None,
             disable_notification=None,
             protect_content=None,
-            reply_to_message_id=None,
-            allow_sending_without_reply=None,
+            reply_parameters=None,
             reply_markup=None):
         return await self._bot.send_animation(self._is_none(chat_id),
                                               animation,
@@ -327,8 +308,7 @@ class Context:
                                               has_spoiler,
                                               disable_notification,
                                               protect_content,
-                                              reply_to_message_id,
-                                              allow_sending_without_reply,
+                                              reply_parameters,
                                               reply_markup)
 
     async def reply_with_video_note(
@@ -345,8 +325,7 @@ class Context:
             thumbnail=None,
             disable_notification=None,
             protect_content=None,
-            reply_to_message_id=None,
-            allow_sending_without_reply=None,
+            reply_parameters=None,
             reply_markup=None):
         return await self._bot.send_video_note(self._is_none(chat_id),
                                                video_note,
@@ -359,8 +338,7 @@ class Context:
                                                thumbnail,
                                                disable_notification,
                                                protect_content,
-                                               reply_to_message_id,
-                                               allow_sending_without_reply,
+                                               reply_parameters,
                                                reply_markup)
 
     async def reply_with_invoice(self,
@@ -390,8 +368,7 @@ class Context:
                                  is_flexible=None,
                                  disable_notification=None,
                                  protect_content=None,
-                                 reply_to_message_id=None,
-                                 allow_sending_without_reply=None,
+                                 reply_parameters=None,
                                  reply_markup=None
                                  ):
         return await self._bot.send_invoice(self._is_none(chat_id),
@@ -419,8 +396,7 @@ class Context:
                                             is_flexible,
                                             disable_notification,
                                             protect_content,
-                                            reply_to_message_id,
-                                            allow_sending_without_reply,
+                                            reply_parameters,
                                             reply_markup)
 
     async def reply_with_game(self,
@@ -429,16 +405,14 @@ class Context:
                               message_thread_id=None,
                               disable_notification=None,
                               protect_content=None,
-                              reply_to_message_id=None,
-                              allow_sending_without_reply=None,
+                              reply_parameters=None,
                               reply_markup=None):
         return await self._bot.send_game(self._is_none(chat_id),
                                          game_short_name,
                                          message_thread_id,
                                          disable_notification,
                                          protect_content,
-                                         reply_to_message_id,
-                                         allow_sending_without_reply,
+                                         reply_parameters,
                                          reply_markup)
 
     async def reply_with_voice(
@@ -453,8 +427,7 @@ class Context:
             duration=None,
             disable_notification=None,
             protect_content=None,
-            reply_to_message_id=None,
-            allow_sending_without_reply=None,
+            reply_parameters=None,
             reply_markup=None):
         return await self._bot.send_voice(self._is_none(chat_id),
                                           voice,
@@ -465,8 +438,7 @@ class Context:
                                           duration,
                                           disable_notification,
                                           protect_content,
-                                          reply_to_message_id,
-                                          allow_sending_without_reply,
+                                          reply_parameters,
                                           reply_markup)
 
     async def reply_with_poll(
@@ -488,8 +460,7 @@ class Context:
             is_closed=None,
             disable_notification=None,
             protect_content=None,
-            reply_to_message_id=None,
-            allow_sending_without_reply=None,
+            reply_parameters=None,
             reply_markup=None):
         return await self._bot.send_poll(self._is_none(chat_id),
                                          question,
@@ -507,8 +478,7 @@ class Context:
                                          is_closed,
                                          disable_notification,
                                          protect_content,
-                                         reply_to_message_id,
-                                         allow_sending_without_reply,
+                                         reply_parameters,
                                          reply_markup)
 
     async def reply_with_quiz(
@@ -530,8 +500,7 @@ class Context:
             is_closed=None,
             disable_notification=None,
             protect_content=None,
-            reply_to_message_id=None,
-            allow_sending_without_reply=None,
+            reply_parameters=None,
             reply_markup=None):
         return await self._bot.send_poll(self._is_none(chat_id),
                                          question,
@@ -549,8 +518,7 @@ class Context:
                                          is_closed,
                                          disable_notification,
                                          protect_content,
-                                         reply_to_message_id,
-                                         allow_sending_without_reply,
+                                         reply_parameters,
                                          reply_markup)
 
     async def reply_with_chat_action(
@@ -576,8 +544,7 @@ class Context:
             horizontal_accuracy=None,
             disable_notification=None,
             protect_content=None,
-            reply_to_message_id=None,
-            allow_sending_without_reply=None,
+            reply_parameters=None,
             reply_markup=None):
         return await self._bot.send_location(self._is_none(chat_id),
                                              latitude,
@@ -589,8 +556,7 @@ class Context:
                                              horizontal_accuracy,
                                              disable_notification,
                                              protect_content,
-                                             reply_to_message_id,
-                                             allow_sending_without_reply,
+                                             reply_parameters,
                                              reply_markup)
 
     async def reply_with_venue(
@@ -608,8 +574,7 @@ class Context:
             google_place_type=None,
             disable_notification=None,
             protect_content=None,
-            reply_to_message_id=None,
-            allow_sending_without_reply=None,
+            reply_parameters=None,
             reply_markup=None):
         return await self._bot.send_venue(self._is_none(chat_id),
                                           latitude,
@@ -623,8 +588,7 @@ class Context:
                                           google_place_type,
                                           disable_notification,
                                           protect_content,
-                                          reply_to_message_id,
-                                          allow_sending_without_reply,
+                                          reply_parameters,
                                           reply_markup)
 
     async def reply_with_contact(
@@ -638,8 +602,7 @@ class Context:
             vcard=None,
             disable_notification=None,
             protect_content=None,
-            reply_to_message_id=None,
-            allow_sending_without_reply=None,
+            reply_parameters=None,
             reply_markup=None):
         return await self._bot.send_contact(self._is_none(chat_id),
                                             phone_number,
@@ -649,8 +612,7 @@ class Context:
                                             vcard,
                                             disable_notification,
                                             protect_content,
-                                            reply_to_message_id,
-                                            allow_sending_without_reply,
+                                            reply_parameters,
                                             reply_markup)
 
     async def reply_with_markdown(self,
@@ -663,8 +625,7 @@ class Context:
                                   disable_web_page_preview=None,
                                   disable_notification=None,
                                   protect_content=None,
-                                  reply_to_message_id=None,
-                                  allow_sending_without_reply=None,
+                                  reply_parameters=None,
                                   reply_markup=None):
         return await self._bot.send_message(self._is_none(chat_id),
                                             text,
@@ -674,10 +635,8 @@ class Context:
                                             disable_web_page_preview,
                                             disable_notification,
                                             protect_content,
-                                            reply_to_message_id,
-                                            allow_sending_without_reply,
-                                            reply_markup
-                                            )
+                                            reply_parameters,
+                                            reply_markup)
 
     async def reply_with_markdown_v2(self,
                                      text,
@@ -689,8 +648,7 @@ class Context:
                                      disable_web_page_preview=None,
                                      disable_notification=None,
                                      protect_content=None,
-                                     reply_to_message_id=None,
-                                     allow_sending_without_reply=None,
+                                     reply_parameters=None,
                                      reply_markup=None):
         return await self._bot.send_message(self._is_none(chat_id),
                                             text,
@@ -700,10 +658,8 @@ class Context:
                                             disable_web_page_preview,
                                             disable_notification,
                                             protect_content,
-                                            reply_to_message_id,
-                                            allow_sending_without_reply,
-                                            reply_markup
-                                            )
+                                            reply_parameters,
+                                            reply_markup)
 
     async def reply_with_html(self,
                               text,
@@ -715,8 +671,7 @@ class Context:
                               disable_web_page_preview=None,
                               disable_notification=None,
                               protect_content=None,
-                              reply_to_message_id=None,
-                              allow_sending_without_reply=None,
+                              reply_parameters=None,
                               reply_markup=None):
         return await self._bot.send_message(self._is_none(chat_id),
                                             text,
@@ -726,7 +681,5 @@ class Context:
                                             disable_web_page_preview,
                                             disable_notification,
                                             protect_content,
-                                            reply_to_message_id,
-                                            allow_sending_without_reply,
-                                            reply_markup
-                                            )
+                                            reply_parameters,
+                                            reply_markup)

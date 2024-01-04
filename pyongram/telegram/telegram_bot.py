@@ -103,9 +103,5 @@ class TelegramBotLongPolling(TelegramBot):
                     break
 
 
-telegram_bot = TelegramBotLongPolling("")
-print(telegram_bot)
-
-
 class TelegramBotWebHooks(TelegramBot):
     pass

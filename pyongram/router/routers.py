@@ -338,6 +338,10 @@ class _MessageRouter(BaseRouter):
         return self.on(update_type="message", field="giveaway_created", trigger=trigger,
                        is_next_handler=is_next_handler)
 
+    def giveaway_winners(self, *, trigger=None, is_next_handler=False):
+        return self.on(update_type="message", field="giveaway_winners", trigger=trigger,
+                       is_next_handler=is_next_handler)
+
 
 class _EditedRouter(BaseRouter):
     def __init__(self):
@@ -530,6 +534,10 @@ class _EditedRouter(BaseRouter):
         return self.on(update_type="edited_message", field="giveaway_created", trigger=trigger,
                        is_next_handler=is_next_handler)
 
+    def edited_giveaway_winners(self, *, trigger=None, is_next_handler=False):
+        return self.on(update_type="edited_message", field="giveaway_winners", trigger=trigger,
+                       is_next_handler=is_next_handler)
+
 
 class _ChannelPostRouter(BaseRouter):
     def __init__(self):
@@ -719,6 +727,10 @@ class _ChannelPostRouter(BaseRouter):
 
     def channel_post_giveaway_created(self, *, trigger=None, is_next_handler=False):
         return self.on(update_type="channel_post", field="giveaway_created", trigger=trigger,
+                       is_next_handler=is_next_handler)
+
+    def channel_post_giveaway_winners(self, *, trigger=None, is_next_handler=False):
+        return self.on(update_type="channel_post", field="giveaway_winners", trigger=trigger,
                        is_next_handler=is_next_handler)
 
 
@@ -928,6 +940,10 @@ class _EditedChannelPostRouter(BaseRouter):
 
     def edited_channel_post_giveaway_created(self, *, trigger=None, is_next_handler=False):
         return self.on(update_type="edited_channel_post", field="giveaway_created", trigger=trigger,
+                       is_next_handler=is_next_handler)
+
+    def edited_channel_post_giveaway_winners(self, *, trigger=None, is_next_handler=False):
+        return self.on(update_type="edited_channel_post", field="giveaway_winners", trigger=trigger,
                        is_next_handler=is_next_handler)
 
 

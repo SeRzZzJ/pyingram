@@ -1,3 +1,5 @@
+from typing_extensions import deprecated
+
 from aiohttp import web_app
 
 from pyongram.utils.useful_functions import remove_none_value
@@ -60,6 +62,13 @@ class ReplyKeyboardButtons:
     @staticmethod
     def web_app(text, url):
         return {"text": text, web_app: {"url": url}}
+
+    @staticmethod
+    def request_users(text, request_id, user_is_bot=None, user_is_premium=None, max_quantity=None):
+        return {"text": text, "request_users": remove_none_value({"request_id": request_id,
+                                                                  "user_is_bot": user_is_bot,
+                                                                  "user_is_premium": user_is_premium,
+                                                                  "max_quantity": max_quantity})}
 
 
 class InlineKeyboardButtons:

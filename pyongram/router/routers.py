@@ -331,6 +331,9 @@ class _MessageRouter(BaseRouter):
     def quote(self, *, trigger=None, is_next_handler=False):
         return self.on(update_type="message", field="quote", trigger=trigger, is_next_handler=is_next_handler)
 
+    def giveaway(self, *, trigger=None, is_next_handler=False):
+        return self.on(update_type="message", field="giveaway", trigger=trigger, is_next_handler=is_next_handler)
+
 
 class _EditedRouter(BaseRouter):
     def __init__(self):
@@ -516,6 +519,9 @@ class _EditedRouter(BaseRouter):
     def edited_quote(self, *, trigger=None, is_next_handler=False):
         return self.on(update_type="edited_message", field="quote", trigger=trigger, is_next_handler=is_next_handler)
 
+    def edited_giveaway(self, *, trigger=None, is_next_handler=False):
+        return self.on(update_type="edited_message", field="giveaway", trigger=trigger, is_next_handler=is_next_handler)
+
 
 class _ChannelPostRouter(BaseRouter):
     def __init__(self):
@@ -699,6 +705,9 @@ class _ChannelPostRouter(BaseRouter):
     def channel_post_quote(self, *, trigger=None, is_next_handler=False):
         return self.on(update_type="channel_post", field="quote", trigger=trigger,
                        is_next_handler=is_next_handler)
+
+    def channel_post_giveaway(self, *, trigger=None, is_next_handler=False):
+        return self.on(update_type="channel_post", field="giveaway", trigger=trigger, is_next_handler=is_next_handler)
 
 
 class _EditedChannelPostRouter(BaseRouter):
@@ -899,6 +908,10 @@ class _EditedChannelPostRouter(BaseRouter):
 
     def edited_channel_post_quote(self, *, trigger=None, is_next_handler=False):
         return self.on(update_type="edited_channel_post", field="quote", trigger=trigger,
+                       is_next_handler=is_next_handler)
+
+    def edited_channel_post_giveaway(self, *, trigger=None, is_next_handler=False):
+        return self.on(update_type="edited_channel_post", field="giveaway", trigger=trigger,
                        is_next_handler=is_next_handler)
 
 

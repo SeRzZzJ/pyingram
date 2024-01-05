@@ -257,8 +257,8 @@ class _MessageRouter(BaseRouter):
         return self.on(update_type="message", field="successful_payment", trigger=trigger,
                        is_next_handler=is_next_handler)
 
-    def user_shared(self, *, trigger=None, is_next_handler=False):
-        return self.on(update_type="message", field="user_shared", trigger=trigger, is_next_handler=is_next_handler)
+    def users_shared(self, *, trigger=None, is_next_handler=False):
+        return self.on(update_type="message", field="users_shared", trigger=trigger, is_next_handler=is_next_handler)
 
     def chat_shared(self, *, trigger=None, is_next_handler=False):
         return self.on(update_type="message", field="chat_shared", trigger=trigger, is_next_handler=is_next_handler)
@@ -437,8 +437,8 @@ class _EditedRouter(BaseRouter):
         return self.on(update_type="edited_message", field="successful_payment", trigger=trigger,
                        is_next_handler=is_next_handler)
 
-    def edited_user_shared(self, *, trigger=None, is_next_handler=False):
-        return self.on(update_type="edited_message", field="user_shared", trigger=trigger,
+    def edited_users_shared(self, *, trigger=None, is_next_handler=False):
+        return self.on(update_type="edited_message", field="users_shared", trigger=trigger,
                        is_next_handler=is_next_handler)
 
     def edited_chat_shared(self, *, trigger=None, is_next_handler=False):
@@ -620,8 +620,8 @@ class _ChannelPostRouter(BaseRouter):
         return self.on(update_type="channel_post", field="successful_payment", trigger=trigger,
                        is_next_handler=is_next_handler)
 
-    def channel_post_user_shared(self, *, trigger=None, is_next_handler=False):
-        return self.on(update_type="channel_post", field="user_shared", trigger=trigger,
+    def channel_post_users_shared(self, *, trigger=None, is_next_handler=False):
+        return self.on(update_type="channel_post", field="users_shared", trigger=trigger,
                        is_next_handler=is_next_handler)
 
     def channel_post_chat_shared(self, *, trigger=None, is_next_handler=False):
@@ -821,8 +821,8 @@ class _EditedChannelPostRouter(BaseRouter):
         return self.on(update_type="edited_channel_post", field="successful_payment", trigger=trigger,
                        is_next_handler=is_next_handler)
 
-    def edited_channel_post_user_shared(self, *, trigger=None, is_next_handler=False):
-        return self.on(update_type="edited_channel_post", field="user_shared", trigger=trigger,
+    def edited_channel_post_users_shared(self, *, trigger=None, is_next_handler=False):
+        return self.on(update_type="edited_channel_post", field="users_shared", trigger=trigger,
                        is_next_handler=is_next_handler)
 
     def edited_channel_post_chat_shared(self, *, trigger=None, is_next_handler=False):

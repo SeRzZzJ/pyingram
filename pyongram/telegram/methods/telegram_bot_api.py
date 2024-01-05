@@ -1695,3 +1695,22 @@ class TelegramBotApi:
             "message_thread_id": message_thread_id,
             "disable_notification": disable_notification,
             "protect_content": protect_content}))
+
+    async def copy_messages(
+            self,
+            chat_id,
+            from_chat_id,
+            message_ids,
+            message_thread_id=None,
+            disable_notification=None,
+            protect_content=None,
+            remove_caption=None,
+    ):
+        return await self._client.request_to_api("copyMessages", remove_none_value({
+            "chat_id": chat_id,
+            "from_chat_id": from_chat_id,
+            "message_ids": message_ids,
+            "message_thread_id": message_thread_id,
+            "disable_notification": disable_notification,
+            "protect_content": protect_content,
+            "remove_caption": remove_caption}))

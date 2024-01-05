@@ -85,6 +85,14 @@ class BaseRouter(ABC):
         return self.on(update_type="chat_join_request", field="", trigger=lambda _: True,
                        is_next_handler=is_next_handler)
 
+    def on_chat_boost(self, *, is_next_handler=False):
+        return self.on(update_type="chat_boost", field="", trigger=lambda _: True,
+                       is_next_handler=is_next_handler)
+
+    def on_removed_chat_boost(self, *, is_next_handler=False):
+        return self.on(update_type="removed_chat_boost", field="", trigger=lambda _: True,
+                       is_next_handler=is_next_handler)
+
     def _returned_build_decorator(self, update_type, field, out_data=None, is_next_handler=False):
         def decorator(handler_fn):
             self._handlers.append(
@@ -1030,7 +1038,43 @@ class _ChatJoinRequestRouter(BaseRouter):
                        is_next_handler=is_next_handler)
 
 
-class Router(_ChatJoinRequestRouter,
+class _ChatBoostRouter(BaseRouter):
+    def __init__(self):
+        super().__init__()
+
+    def chat_boost_chat(self, *, is_next_handler=False):
+        return self.on(update_type="chat_boost", field="chat", trigger=lambda _: True,
+                       is_next_handler=is_next_handler)
+
+    def chat_boost_boost(self, *, is_next_handler=False):
+        return self.on(update_type="chat_boost", field="boost", trigger=lambda _: True,
+                       is_next_handler=is_next_handler)
+
+
+class _RemovedChatBoostRouter(BaseRouter):
+    def __init__(self):
+        super().__init__()
+
+    def removed_chat_boost_chat(self, *, is_next_handler=False):
+        return self.on(update_type="removed_chat_boost", field="chat", trigger=lambda _: True,
+                       is_next_handler=is_next_handler)
+
+    def removed_chat_boost_boost_id(self, *, is_next_handler=False):
+        return self.on(update_type="removed_chat_boost", field="boost_id", trigger=lambda _: True,
+                       is_next_handler=is_next_handler)
+
+    def removed_chat_boost_remove_date(self, *, is_next_handler=False):
+        return self.on(update_type="removed_chat_boost", field="remove_date", trigger=lambda _: True,
+                       is_next_handler=is_next_handler)
+
+    def removed_chat_boost_source(self, *, is_next_handler=False):
+        return self.on(update_type="removed_chat_boost", field="source", trigger=lambda _: True,
+                       is_next_handler=is_next_handler)
+
+
+class Router(_RemovedChatBoostRouter,
+             _ChatBoostRouter,
+             _ChatJoinRequestRouter,
              _ChatMemberRouter,
              _MyChatMemberRouter,
              _PollAnswerRouter,

@@ -54,7 +54,9 @@ class TelegramBotLongPolling(TelegramBot):
                 "poll_answer",
                 "my_chat_member",
                 "chat_member",
-                "chat_join_request"
+                "chat_join_request",
+                "chat_boost",
+                "removed_chat_boost",
             ]
 
         while True:

@@ -1714,3 +1714,12 @@ class TelegramBotApi:
             "disable_notification": disable_notification,
             "protect_content": protect_content,
             "remove_caption": remove_caption}))
+
+    async def get_user_chat_boosts(
+            self,
+            chat_id,
+            user_id,
+    ):
+        return await self._client.request_to_api("getUserChatBoosts", remove_none_value({
+            "chat_id": chat_id,
+            "user_id": user_id}))

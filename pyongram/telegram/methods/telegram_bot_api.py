@@ -1669,3 +1669,12 @@ class TelegramBotApi:
             "message_id": message_id,
             "reaction": reaction,
             "is_big": is_big}))
+
+    async def delete_messages(
+            self,
+            chat_id,
+            message_ids=None
+    ):
+        return await self._client.request_to_api("deleteMessages", remove_none_value({
+            "chat_id": chat_id,
+            "message_ids": message_ids}))

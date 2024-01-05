@@ -58,7 +58,7 @@ class TelegramBotApi:
             message_thread_id=None,
             parse_mode=None,
             entities=None,
-            disable_web_page_preview=None,
+            link_preview_options=None,
             disable_notification=None,
             protect_content=None,
             reply_parameters=None,
@@ -70,7 +70,7 @@ class TelegramBotApi:
             "message_thread_id": message_thread_id,
             "parse_mode": parse_mode,
             "entities": entities,
-            "disable_web_page_preview": disable_web_page_preview,
+            "link_preview_options": link_preview_options,
             "disable_notification": disable_notification,
             "protect_content": protect_content,
             "reply_parameters": reply_parameters,
@@ -1131,7 +1131,7 @@ class TelegramBotApi:
             inline_message_id=None,
             parse_mode=None,
             entities=None,
-            disable_web_page_preview=None,
+            link_preview_options=None,
             message_id=None,
             reply_markup=None
     ):
@@ -1141,7 +1141,7 @@ class TelegramBotApi:
             "inline_message_id": inline_message_id,
             "parse_mode": parse_mode,
             "entities": entities,
-            "disable_web_page_preview": disable_web_page_preview,
+            "link_preview_options": link_preview_options,
             "message_id": message_id,
             "reply_markup": reply_markup
         }))

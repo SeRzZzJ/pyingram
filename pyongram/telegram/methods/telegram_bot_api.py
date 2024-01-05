@@ -1688,7 +1688,7 @@ class TelegramBotApi:
             disable_notification=None,
             protect_content=None,
     ):
-        return await self._client.request_to_api("deleteMessages", remove_none_value({
+        return await self._client.request_to_api("forwardMessages", remove_none_value({
             "chat_id": chat_id,
             "from_chat_id": from_chat_id,
             "message_ids": message_ids,

@@ -1,5 +1,3 @@
-from typing_extensions import deprecated
-
 from aiohttp import web_app
 
 from pyongram.utils.useful_functions import remove_none_value

@@ -4,7 +4,7 @@ from pyongram.utils.useful_functions import remove_none_value
 
 class TelegramBotApi:
     def __init__(self, token: str):
-        self._client = ApiClient(f"https://api.telegram.org/bot{token}")
+        self._client = ApiClient(token)
 
     def __repr__(self):
         return f"{self.__class__.__name__}(self._client={self._client})"
